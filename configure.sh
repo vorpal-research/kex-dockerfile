@@ -16,4 +16,4 @@ pacman -S --noconfirm \
 	python \
 	jdk8-openjdk \
 	maven \
-	mercurial
+	git	

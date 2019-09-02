@@ -16,6 +16,8 @@ rm -rf "$Z3_DIR"
 
 # download and build Kex
 cd /home
-hg clone https://bitbucket.org/vorpal-research/kex
+git clone https://github.com/vorpal-research/kex.git
 cd /home/kex
+git submodule init
+git submodule update
 mvn clean verify
