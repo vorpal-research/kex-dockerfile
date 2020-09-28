@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install required packages
-pacman -S --noconfirm \
+pacman -Syu --noconfirm \
 	python \
 	jdk8-openjdk \
 	maven
