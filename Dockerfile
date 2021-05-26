@@ -18,8 +18,6 @@ RUN mvn install:install-file -Dfile=/usr/lib/com.microsoft.z3.jar -DgroupId=com.
 USER root
 RUN chmod -R a+rwx /home
 USER arch-user
-WORKDIR /home/arch-user/.m2/
-COPY settings.xml /home/arch-user/.m2/
 WORKDIR /home
 RUN git clone https://github.com/vorpal-research/kex.git
 WORKDIR /home/kex
