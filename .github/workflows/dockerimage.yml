@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build `run` Docker image
-      run: docker build . --file KexStandaloneRun --tag kex:$(date +%s)
+      run: make run
 
     - name: Build `test` Docker image
-      run: docker build . --file KexStandaloneTest --tag kex:$(date +%s)
+      run: make test
