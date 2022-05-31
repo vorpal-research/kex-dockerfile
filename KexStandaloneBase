@@ -5,7 +5,7 @@ ENV Z3_VERSION "4.8.12"
 ENV JAVA_HOME /lib/jvm/default
 
 # install required packages
-WORKDIR /home
+USER root
 RUN pacman -Syu --noconfirm \
 	python \
 	jdk8-openjdk \
@@ -21,7 +21,7 @@ USER root
 RUN chmod -R a+rwx /home
 
 # build z3
-USER arch-user
+USER root
 WORKDIR /home
 RUN git clone https://github.com/Z3Prover/z3.git
 WORKDIR /home/z3
@@ -34,9 +34,9 @@ RUN make -j8
 USER root
 WORKDIR /home/z3/build
 RUN make install
-USER arch-user
 
 # install z3 bindings
+USER root
 WORKDIR /home/z3/build
 RUN mvn install:install-file -Dfile=com.microsoft.z3.jar -DgroupId=com.microsoft -DartifactId=z3 -Dversion=$Z3_VERSION -Dpackaging=jar
 
@@ -44,5 +44,7 @@ RUN mvn install:install-file -Dfile=com.microsoft.z3.jar -DgroupId=com.microsoft
 USER root
 COPY kex-install.sh /usr/bin
 COPY kex-test.sh /usr/bin
+COPY kex-run.sh /usr/bin
 RUN chmod a+rwx /usr/bin/kex-install.sh
 RUN chmod a+rwx /usr/bin/kex-test.sh
+RUN chmod a+rwx /usr/bin/kex-run.sh

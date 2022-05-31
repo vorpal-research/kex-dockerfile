@@ -17,6 +17,13 @@ make run # building run image
 
 ## Usage
 
+Images are available at [Docker Hub](https://hub.docker.com/repository/docker/abdullin/kex-standalone/general):
+
+```bash
+docker pull abdullin/kex-standalone:test
+docker pull abdullin/kex-standalone:run
+```
+
 Run tests:
 ```
 docker run abdullin/kex-standalone:test
