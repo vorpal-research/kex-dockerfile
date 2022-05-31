@@ -1,0 +1,6 @@
+name: 'Kex tests'
+author: 'Azat Abdullin'
+description: 'Build Kex and run long tests'
+runs:
+  using: 'docker'
+  image: 'docker://abdullin/kex-standalone:test'
