@@ -1,0 +1,5 @@
+FROM abdullin/kex-standalone:base
+
+# prepare for run
+USER arch-user
+ENTRYPOINT ["kex-run.sh"]

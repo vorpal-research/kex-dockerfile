@@ -16,13 +16,9 @@ WORKDIR /tmp
 RUN yay -S --noconfirm \
 	boolector-java
 
+# give permissions to everyone
 USER root
 RUN chmod -R a+rwx /home
-
-COPY kex-install.sh /usr/bin
-COPY kex-test.sh /usr/bin
-RUN chmod a+rwx /usr/bin/kex-install.sh
-RUN chmod a+rwx /usr/bin/kex-test.sh
 
 # build z3
 USER arch-user
@@ -44,6 +40,9 @@ USER arch-user
 WORKDIR /home/z3/build
 RUN mvn install:install-file -Dfile=com.microsoft.z3.jar -DgroupId=com.microsoft -DartifactId=z3 -Dversion=$Z3_VERSION -Dpackaging=jar
 
-# prepare for run
-USER arch-user
-ENTRYPOINT ["kex-test.sh"]
+# install kex scripts
+USER root
+COPY kex-install.sh /usr/bin
+COPY kex-test.sh /usr/bin
+RUN chmod a+rwx /usr/bin/kex-install.sh
+RUN chmod a+rwx /usr/bin/kex-test.sh
