@@ -2,4 +2,4 @@
 
 kex-install.sh
 cd /home/kex
-mvn clean verify 
+mvn clean verify -Pfull-smt 

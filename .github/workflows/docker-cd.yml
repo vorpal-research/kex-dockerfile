@@ -1,0 +1,34 @@
+name: Docker publish
+
+on: 
+  release:
+    types: published
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    -
+      name: docker login
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+      
+    - name: Build the Docker image
+      run: make all
+
+    - name: Push base
+      run: docker push abdullin/kex-standalone:base
+
+    - name: Push run
+      run: docker push abdullin/kex-standalone:run
+
+    - name: Push test
+      run: docker push abdullin/kex-standalone:test
+

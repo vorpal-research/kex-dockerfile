@@ -1,44 +1,12 @@
-FROM abdullin/archlinux-aur:latest
-MAINTAINER Azat Abdullin <abdullin@kspt.icc.spbstu.ru>
-
-ENV Z3_VERSION "4.8.12"
-ENV JAVA_HOME /lib/jvm/default
+FROM archlinux:latest
+MAINTAINER Azat Abdullin <azat.aam@gmail.com>
 
 # install required packages
 USER root
 RUN pacman -Syu --noconfirm \
-	python \
+	git \
 	jdk8-openjdk \
 	maven
-
-USER arch-user
-WORKDIR /tmp
-RUN yay -S --noconfirm \
-	boolector-java
-
-# give permissions to everyone
-USER root
-RUN chmod -R a+rwx /home
-
-# build z3
-USER root
-WORKDIR /home
-RUN git clone https://github.com/Z3Prover/z3.git
-WORKDIR /home/z3
-RUN git checkout z3-$Z3_VERSION
-RUN python scripts/mk_make.py --java
-WORKDIR /home/z3/build
-RUN make -j8
-
-# install z3
-USER root
-WORKDIR /home/z3/build
-RUN make install
-
-# install z3 bindings
-USER root
-WORKDIR /home/z3/build
-RUN mvn install:install-file -Dfile=com.microsoft.z3.jar -DgroupId=com.microsoft -DartifactId=z3 -Dversion=$Z3_VERSION -Dpackaging=jar
 
 # install kex scripts
 USER root
