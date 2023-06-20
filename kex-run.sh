@@ -3,4 +3,4 @@
 kex-install.sh
 cd /home/kex
 mvn package
-./kex.sh $*
+python3 ./kex.py $*

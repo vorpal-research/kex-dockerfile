@@ -6,7 +6,8 @@ USER root
 RUN pacman -Syu --noconfirm \
 	git \
 	jdk8-openjdk \
-	maven
+	maven \
+	python3
 
 # install kex scripts
 USER root
