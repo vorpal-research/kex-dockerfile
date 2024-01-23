@@ -4,7 +4,7 @@ Docker images for [Kex](https://github.com/vorpal-research/kex).
 Repository contains build for two containers:
 * `abdullin/kex-standalone:test` --- image for building Kex and running its tests
 
-* `abdullin/kex-standalone:test` --- image for building and running Kex
+* `abdullin/kex-standalone:run` --- image for building and running Kex
 
 
 ## Build
