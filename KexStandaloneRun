@@ -14,9 +14,7 @@ RUN pacman -Syu --noconfirm \
 	python3
 
 # install kex scripts
-COPY kex-test.sh /usr/bin
 COPY kex-run.sh /usr/bin
-RUN chmod a+rwx /usr/bin/kex-test.sh
 RUN chmod a+rwx /usr/bin/kex-run.sh
 
 # install kex 
