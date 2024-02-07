@@ -1,35 +1,26 @@
 # Kex dockerfile
 Docker images for [Kex](https://github.com/vorpal-research/kex).
 
-Repository contains build for two containers:
-* `abdullin/kex-standalone:test` --- image for building Kex and running its tests
+Repository providea an image for running Kex: `abdullin/kex-standalone:$version`, where `$version` is required version of Kex. 
 
-* `abdullin/kex-standalone:run` --- image for building and running Kex
-
+Currently latest release is version `0.0.1`.
 
 ## Build
 
 ```make
-make test # building test image
-make run # building run image
+make
 ```
 
 
 ## Usage
 
-Images are available at [Docker Hub](https://hub.docker.com/repository/docker/abdullin/kex-standalone/general):
+Image is available at [Docker Hub](https://hub.docker.com/repository/docker/abdullin/kex-standalone/general):
 
 ```bash
-docker pull abdullin/kex-standalone:test
-docker pull abdullin/kex-standalone:run
-```
-
-Run tests:
-```
-docker run abdullin/kex-standalone:test
+docker pull abdullin/kex-standalone:$version
 ```
 
 Run Kex on a custom project:
 ```
-docker run -v ~/myproject:/home/myproject -v ~/kex-output:/home/kex-output abdullin/kex-standalone:run --classpath /home/myproject/target/myproject.jar --target myproject.\* --output /home/kex-output
+docker run -v ~/myproject:/home/myproject -v ~/kex-output:/home/kex-output abdullin/kex-standalone:$version --classpath /home/myproject/target/myproject.jar --target myproject.\* --output /home/kex-output
 ```
