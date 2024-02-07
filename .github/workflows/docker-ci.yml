@@ -10,8 +10,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Build `run` Docker image
-      run: make run
-
-    - name: Build `test` Docker image
-      run: make test
+    - name: Build Docker image
+      run: make

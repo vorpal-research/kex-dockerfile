@@ -21,14 +21,8 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
       
     - name: Build the Docker image
-      run: make all
+      run: make
 
-    - name: Push base
-      run: docker push abdullin/kex-standalone:base
-
-    - name: Push run
-      run: docker push abdullin/kex-standalone:run
-
-    - name: Push test
-      run: docker push abdullin/kex-standalone:test
+    - name: Push
+      run: docker push abdullin/kex-standalone:${{ github.event.release.tag_name }}
 

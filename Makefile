@@ -1,13 +1,9 @@
 
 .PHONY: all
 
-all: test run 
+VERSION=0.0.1
 
-base:
-	docker build -f KexStandaloneBase -t abdullin/kex-standalone:base .
+all: $(VERSION)
 
-test: base
-	docker build -f KexStandaloneTest -t abdullin/kex-standalone:test .
-
-run: base
-	docker build -f KexStandaloneRun -t abdullin/kex-standalone:run .
+$(VERSION):
+	docker build --build-arg="version=$(VERSION)" -f KexStandaloneRun -t abdullin/kex-standalone:$(VERSION)
