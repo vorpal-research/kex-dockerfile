@@ -3,7 +3,7 @@ Docker images for [Kex](https://github.com/vorpal-research/kex).
 
 Repository providea an image for running Kex: `abdullin/kex-standalone:$version`, where `$version` is required version of Kex. 
 
-Currently latest release is version `0.0.1`.
+Currently latest release is version `0.0.5`.
 
 ## Build
 
